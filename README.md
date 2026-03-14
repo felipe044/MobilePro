@@ -1,97 +1,114 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Controle de Gastos
 
-# Getting Started
+Aplicativo mobile para controle de gastos pessoais, desenvolvido em **React Native** como projeto acadêmico de pós-graduação em Desenvolvimento Mobile.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+O app demonstra arquitetura **MVVM**, **Clean Code**, **Injeção de Dependência**, **Design Patterns** e **Testes Unitários**, com interface moderna seguindo boas práticas de UI/UX.
 
-## Step 1: Start Metro
+## Funcionalidades
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- Adicionar gastos com título, valor e categoria
+- Visualizar total gasto e lista de despesas
+- Excluir gastos
+- Criar e excluir categorias personalizadas
+- Resumo de gastos agrupados por categoria
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Pré-requisitos
 
-```sh
-# Using npm
+- Node.js >= 22.11.0
+- npm ou yarn
+- Android Studio (para emulador Android)
+- Variáveis de ambiente: `ANDROID_HOME`, `JAVA_HOME`, `Path` com `platform-tools` e `emulator`
+
+## Instalação
+
+```bash
+# Clonar o repositório
+git clone https://github.com/SEU_USUARIO/expense-tracker.git
+cd expense-tracker
+
+# Instalar dependências
+npm install
+
+# Iniciar o Metro Bundler (em um terminal)
 npm start
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+# Executar no Android (em outro terminal)
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+## Scripts
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+| Comando | Descrição |
+|---------|-----------|
+| `npm start` | Inicia o Metro Bundler |
+| `npm run android` | Build e executa no emulador Android |
+| `npm run ios` | Executa no simulador iOS (macOS) |
+| `npm test` | Executa os testes unitários |
+| `npm run lint` | Executa o ESLint |
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## Requisitos Acadêmicos Implementados
 
-```sh
-bundle install
+### 1. Arquitetura MVVM
+
+| Camada | Localização | Descrição |
+|--------|-------------|-----------|
+| **Presentation** | `src/presentation/screens/` | Telas (Views) |
+| **ViewModels** | `src/presentation/viewmodels/` | Lógica de apresentação |
+| **Repository** | `src/data/repositories/` | Abstração da fonte de dados |
+| **Data Source** | `src/data/datasources/` | Armazenamento em memória |
+| **Models** | `src/data/models/` | Modelo de dados |
+
+### 2. Clean Code
+
+Classes pequenas, nomes descritivos, separação de responsabilidades, estilização em arquivos `*.styles.ts` separados.
+
+### 3. Injeção de Dependência
+
+Container em `src/core/Container.ts` (estilo GetIt), registrando LocalStorageService, ExpenseRepository e ExpenseViewModel.
+
+### 4. Design Patterns
+
+- **Repository** – `ExpenseRepository` abstrai o data source
+- **Singleton** – `LocalStorageService.getInstance()`
+
+### 5. Testes Unitários (5 testes)
+
+- Adicionar gasto  
+- Remover gasto  
+- Calcular total  
+- Filtrar por categoria  
+- Rejeitar valores negativos  
+
+## Estrutura do Projeto
+
+```
+src/
+├── core/
+│   └── Container.ts
+├── data/
+│   ├── datasources/LocalStorageService.ts
+│   ├── models/Expense.ts
+│   └── repositories/ExpenseRepository.ts
+├── navigation/
+│   └── AppNavigator.tsx
+└── presentation/
+    ├── screens/
+    │   ├── AddExpenseScreen/
+    │   ├── HomeScreen/
+    │   └── SummaryScreen/
+    └── viewmodels/
+        └── ExpenseViewModel.ts
+test/
+└── ExpenseRepository.test.ts
 ```
 
-Then, and every time you update your native dependencies, run:
+## Tecnologias
 
-```sh
-bundle exec pod install
-```
+- React Native 0.84
+- TypeScript
+- React Navigation 7
+- Jest (testes)
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Licença
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Este projeto foi desenvolvido para fins acadêmicos.
