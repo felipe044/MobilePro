@@ -24,7 +24,6 @@ O app demonstra arquitetura **MVVM**, **Clean Code**, **Injeção de Dependênci
 ```bash
 # Clonar o repositório
 git clone https://github.com/felipe044/MobilePro.git
-cd expense-tracker
 
 # Instalar dependências
 npm install
