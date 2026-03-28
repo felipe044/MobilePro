@@ -170,3 +170,6 @@ test/
 ## Licença
 
 Este projeto foi desenvolvido para fins acadêmicos.
+
+Link do vídeo de apresentação no youtube:
+https://youtu.be/jPwexBiNZFQ
